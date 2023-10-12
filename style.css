@@ -1,0 +1,59 @@
+/* Title colour and font */
+.class-select{    
+    color: black; 
+    font-family: 'Orienta', sans-serif; 
+    font-size: 16px; 
+    line-height: 24px; 
+    margin: 0 0 24px; 
+    text-align: center;
+    background-color: white;
+}
+
+#triggerid{
+    color: #ed8920; 
+    font-family: 'Helvetica Neue', sans-serif; 
+    font-size: 50px; 
+    font-weight: bold; 
+    letter-spacing: -1px; 
+    line-height: 1; 
+    text-align: center;
+    background-color: white;
+    border-radius: 25px;
+    height: 60px;
+}
+
+#title{
+    font-family: 'Helvetica Neue', sans-serif;
+    letter-spacing: -1px; 
+    text-align: center;
+    background-color: white;
+    border-radius:20px;
+    height: 60px;
+    
+}
+
+.visualization-container-middle {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center;
+    text-align: center; /* Center text horizontally */
+    background-color: white;
+    border-radius: 25px;
+}
+
+
+
+h2{
+    color:black;
+    text-align: center;
+}
+
+.visualization-container-side {
+    display: flex; /* Use flexbox for layout */
+    background-color: white;
+}
+
+/* Style for each visualization */
+.visualization-side {
+    flex: 1; /* Distribute available space equally */
+}

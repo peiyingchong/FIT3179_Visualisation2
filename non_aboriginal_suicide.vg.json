@@ -1,0 +1,40 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Percentage of Suicides of non-indigenous people in year 2021",
+    "width": 500,
+    "height": 300,
+    "projection": {"type": "equalEarth"},
+    "data": {
+      "url": "https://raw.githubusercontent.com/peiyingchong/FIT3179/main/aus.topojson",
+      "format": {"type": "topojson", "feature": "aus_state"}
+    },
+    "transform": [
+      {
+        "lookup": "properties.STATE_NAME",
+        "from": {
+          "data": {
+            "url": "https://raw.githubusercontent.com/peiyingchong/FIT3179_Visualisation2/main/Suicide%20by%20State(Non-aboriginal).csv"
+          },
+          "key": "State",
+          "fields": ["Rounded"]
+        }
+      }
+    ],
+    "mark": {"type": "geoshape"},
+    "encoding": {
+      "color": {
+        "field": "Rounded",
+        "type": "quantitative",
+        "title": "Suicide Percentage per ('000)",
+        "scale": {"type": "log"}
+      },
+      "tooltip": [
+        {"field": "properties.STATE_NAME", "type": "nominal", "title": "State"},
+        {
+          "field": "Rounded",
+          "type": "quantitative",
+          "title": "Percentage of suicide (%)"
+        }
+      ]
+    }
+  }

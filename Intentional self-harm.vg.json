@@ -1,0 +1,70 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "A simple radial chart with embedded data.",
+    "data": {
+      "url":"https://raw.githubusercontent.com/peiyingchong/FIT3179_Visualisation2/main/Intentional%20self-harm%2C%20Age-standardised%20death%20rates%20by%20Country%20of%20birth%2C%202018-2022.csv"
+    },
+    "width": 800,
+    "height":400,
+    "layer": [{
+      "mark": {"type": "arc", "innerRadius": 20, "stroke": "#fff"}
+      
+    },{
+      "mark": {"type": "text", "radiusOffset": 10},
+      "encoding": {
+        "text": {"field": "Rate(b)", "type": "quantitative" }
+      }
+    }],
+    "encoding": {
+      "theta": {"field": "Rate(b)", "type": "quantitative", "stack": true},
+      "radius": {"field": "Rate(b)", "scale": {"type": "sqrt", "zero": true, "rangeMin": 20}},
+      "color": {
+        "field": "Country of birth(g)", 
+        "type": "nominal",
+        "scale":{
+            "domain":[
+                "Philippines",
+                "India",
+                "Vietnam",
+                "Malaysia",
+                "China (excludes SARs and Taiwan)", 
+                "Sri Lanka",
+                "Hong Kong (SAR of China)",
+                "Italy",
+                "Germany",
+                "United States of America", 
+                "Korea, Republic of (South)",
+                "South Africa",
+                "Canada", 
+                "England", 
+                "Netherlands", 
+                "Australia", 
+                "Scotland", 
+                "New Zealand", 
+                "Croatia"
+            ],
+            "range":[
+                "#1f77b4",
+                "#ff7f0e",
+                "#2ca02c",
+                "#9467bd",
+                "#8c564b",
+                "#e377c2",
+                "#7f7f7f",
+                "#bcbd22",
+                "#17becf",
+                "#ff9896",
+                "#98df8a",
+                "#ff9896",
+                "#aec7e8",
+                "#ffbb78",
+                "#d62728", 
+                "#c5b0d5",
+                "#c49c94",
+                "#dbdb8d",
+                "#9edae5"
+            ]
+        }}
+    }
+  }
+  

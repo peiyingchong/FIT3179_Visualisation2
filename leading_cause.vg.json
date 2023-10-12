@@ -1,0 +1,181 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 400,
+    "height": 600,
+    "title": "Leading cause of death for selected years",
+    "data": {
+      "url": "https://raw.githubusercontent.com/peiyingchong/HW10_FIT3179/main/Leading%20causes%20of%20death%2C%20Australia%20-%20selected%20years%20-%202013%2C%202017%2C%202021%2C%202022%20(a)(b)(c)(d)(e).csv"
+    },
+    "params":[
+        {
+            "name": "Cause_selection",
+            "bind": {
+                "input":"select",
+                "options":[
+                    "null",
+                    "Ischaemic heart disease",
+                    "Dementia, including Alzheimer's disease ",
+                    "COVID-19 ",
+                    "Cerebrovascular disease",
+                    "Malignant neoplasm of trachea, bronchus and lung ", 
+                    "Chronic lower respiratory disease",
+                    "Diabetes ",
+                    "Malignant neoplasm of colon, sigmoid, rectum and anus ",
+                    "Malignant neoplasm¬†of lymphoid, haematopoietic and related tissue",
+                    "Diseases of the urinary system ",
+                    "Accidental falls",
+                    "Heart failure and complications and ill-defined heart disease",
+                    "Malignant neoplasm of prostate ", 
+                    "Malignant neoplasm of pancreas ", 
+                    "Intentional self-harm [suicide] ", 
+                    "Malignant neoplasm¬†of breast ", 
+                    "Cardiac arrhythmias ", 
+                    "Influenza and pneumonia ", 
+                    "Hypertensive diseases",
+                    "Cirrhosis and other diseases of liver " 
+                ],
+                "labels":[
+                    "Show All",
+                    "Ischaemic heart disease",
+                    "Dementia, including Alzheimer's disease",
+                    "COVID-19",
+                    "Cerebrovascular disease",
+                    "Malignant neoplasm of trachea, bronchus and lung", 
+                    "Chronic lower respiratory disease",
+                    "Diabetes",
+                    "Malignant neoplasm of colon, sigmoid, rectum and anus",
+                    "Malignant neoplasm of lymphoid, haematopoietic and related tissue",
+                    "Diseases of the urinary system",
+                    "Accidental falls",
+                    "Heart failure and complications and ill-defined heart disease",
+                    "Malignant neoplasm of prostate", 
+                    "Malignant neoplasm of pancreas", 
+                    "Intentional self-harm [suicide]", 
+                    "Malignant neoplasm of breast", 
+                    "Cardiac arrhythmias", 
+                    "Influenza and pneumonia", 
+                    "Hypertensive diseases",
+                    "Cirrhosis and other diseases of liver" 
+                ],
+                "name": "Cause Selection"
+            }
+        }
+    ],
+    "transform":[
+        {
+            "calculate": "datum.Number/10000",
+            "as": "Number_per_10k"
+        },
+        {
+            "filter":"Cause_selection == null || datum['Cause of death '] ==  Cause_selection"
+        }
+    ],       
+    "encoding":{
+        "x":{
+            "field":"Year",
+            "type":"ordinal",
+            "title": "Year"
+        },
+        "y":{
+            "field":"Number_per_10k",
+            "type": "quantitative",
+            "title":"Number of deaths per 10k"
+            }
+        },
+        "layer":[
+            {
+                "mark": {
+                    "type": "line",
+                    "align":"center"
+                },
+                "encoding":{
+                    "color":{
+                        "legend":null,
+                        "field":"Cause of death ",
+                        "type":"nominal",
+                        "scale":{
+                            "domain":[
+                                "Ischaemic heart disease",
+                                "Dementia, including Alzheimer's disease ",
+                                "COVID-19 ",
+                                "Cerebrovascular disease",
+                                "Malignant neoplasm of trachea, bronchus and lung ", 
+                                "Chronic lower respiratory disease",
+                                "Diabetes ",
+                                "Malignant neoplasm of colon, sigmoid, rectum and anus ",
+                                "Malignant neoplasm¬†of lymphoid, haematopoietic and related tissue",
+                                "Diseases of the urinary system ", 
+                                "Accidental falls",
+                                "Heart failure and complications and ill-defined heart disease",
+                                "Malignant neoplasm of prostate ", 
+                                "Malignant neoplasm of pancreas ", 
+                                "Intentional self-harm [suicide] ", 
+                                "Malignant neoplasm¬†of breast ", 
+                                "Cardiac arrhythmias ", 
+                                "Influenza and pneumonia ", 
+                                "Hypertensive diseases",
+                                "Cirrhosis and other diseases of liver " 
+                            ],
+                            "range":[
+                                "#1f77b4",
+                                "#ff7f0e",
+                                "#2ca02c",
+                                "#9467bd",
+                                "#8c564b",
+                                "#e377c2",
+                                "#7f7f7f",
+                                "#bcbd22",
+                                "#17becf",
+                                "#ff9896",
+                                "#98df8a",
+                                "#ff9896",
+                                "#aec7e8",
+                                "#ffbb78",
+                                "#d62728", 
+                                "#c5b0d5",
+                                "#c49c94",
+                                "#dbdb8d",
+                                "#9edae5",
+                                "#f7b6d2"
+                            ]
+                        }
+                    },
+                    "size": {
+                        "condition": {"test": "datum['Cause of Death '] === 'Intentional self-harm [suicide] '", "value": 10}, 
+                        "value": 2 
+                    },
+                    "tooltip":[
+                        {"field":"Cause of death ","type":"nominal"},
+                        {"field":"Number","type":"quantitative","format":",","title":"Deaths"},
+                        {"field":"Year","type":"quantitative"}
+                    ]
+                }
+            },
+            {
+                "mark":{
+                    "type": "text",
+                    "align":"left",
+                    "baseline":"line-top",
+                    "dx":-12,
+                    "fontSize":11.5,
+                    "fontStyle":"italic"
+                },
+                "encoding":{
+                    "text":{"field":"Cause of death ", "type":"nominal"},
+                    "color":{"value":"black"},
+                    "opacity":{
+                        "condition":{
+                            "test": " (datum['Cause of death '] == 'COVID-19 '&& datum['Year'] == 2022 ) || (datum['Cause of death '] == 'Diabetes '&& datum['Year'] == 2022)|| (datum['Cause of death '] == 'Intentional self-harm [suicide] '&& datum['Year'] == 2022)",
+                            "value":1
+                        },
+                        "value":0
+                    },
+                    "tooltip":[
+                        {"field":"Cause of death ","type":"nominal"},
+                        {"field":"Number","type":"quantitative","format":",","title":"Deaths"},
+                        {"field":"Year","type":"quantitative"}
+                    ]
+                }
+            }
+        ]
+    }

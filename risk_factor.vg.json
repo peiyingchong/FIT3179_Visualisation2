@@ -1,0 +1,49 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title":"Top risk factor by age (2022)",
+    "data":{
+        "url":"https://raw.githubusercontent.com/peiyingchong/FIT3179_Visualisation2/main/Top%20risk%20factors%20by%20age(2022).csv"
+    },
+    "width": 800,
+    "height":400,
+    "layer": [{
+        "mark":{"type":"rule","color":"#ccc"},
+        "encoding": {
+            "x":{"field":"Age Group"}
+        }},{
+            "mark":"line",
+            "encoding":{
+                "color":{ "type":"nominal","field":"Risk Factors"},
+                "opacity": {"value":1},
+                "x": {"type":"nominal", "field":"Age Group"},
+                "y":{"type":"quantitative","field":"Proportion(%)","axis":null},
+                "tooltip":[
+                    {"type":"quantitative", "field":"Proportion(%)"},
+                    {"type":"nominal","field":"Risk Factors","title":"Risk Factor"}
+                ]
+            }
+        },
+        {
+            "encoding": {
+              "x": {"type": "nominal", "field": "Age Group"},
+              "y": {"value": 0}
+            },
+            "layer": [{
+              "mark": {"type": "text", "style": "label"},
+              "encoding": {
+                "text": {"aggregate": "max", "field": "Proportion(%)"}
+              }
+            }, {
+              "mark": {"type": "tick", "style": "tick", "size": 8, "color": "#ccc"}
+            }]
+          }
+    ],
+    "config": {
+        "axisX": {"domain": false,"labelAngle":0,"tickColor":"#ccc","title":null},
+        "view":{"stroke":null},
+        "style":{
+            "label":{"baseline":"middle","align":"right","dx":-5},
+            "tick": {"orient": "horizontal"}
+        }
+    }
+}

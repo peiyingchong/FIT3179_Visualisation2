@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2">
+    </script> <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0">
+    </script> <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+    <script src="vega_lite_vis.js"></script>
+    <link rel = "stylesheet" href = "style.css">
+    <p id="triggerid">Trigger Warning </p>
+    <p class="class-select"> <br> In today's data visualization, we delve into a critical issue that touches the lives of many - suicide. <br>
+        While the goal of this visualization is to raise awareness, promote understanding, and encourage support for those affected by suicide,<br>
+         we understand that the content discussed can be emotionally challenging and triggering for some viewers. <br> <br> 
+         This data visualization includes statistics, stories, and information related to suicide. <br>
+         It may contain content that is distressing or unsettling. <br>
+         We want to ensure that you are aware of this in advance so you can make an informed decision about proceeding. <br>
+         If you feel that this topic may be distressing or triggering for you, we encourage you to prioritize your emotional well-being.<br>
+        <br>
+        Our aim is to foster compassion, increase awareness, and open up dialogues that contribute to suicide prevention and mental health support. <br>
+        We hope that through this visualization, we can collectively work toward a more empathetic and supportive world.
+        
+        </p>
+</head>
+<body>
+    <style>
+        body {
+        background-image: url('bg.jpg');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position-x: center;
+        background-position-y:center;
+        }
+    </style>
+    <p> <br> </p>   
+    <h1 id="title"> Understanding Suicide: A Call for Awareness and Support</h1>
+    <p> <br> </p>
+
+
+    <div class="visualization-container-middle">
+        <h2> Intentional self-harm, Age-standardised death rates by Country of birth, 2018-2022 <br></h2>
+        <p> Excluding Australia, England was the most common country of birth for those who died by suicide (757 deaths). 
+            <br> When adjusted for population size and age-structure, those with a country of birth in England did not have the highest suicide rate of those born overseas. 
+            <br>Those born in Croatia, New Zealand and Scotland had a higher suicide rate than those born in Australia. </p>
+        <div id="radial_chart"></div>
+    </div>
+    
+
+    <div class=".visualization-container-side">
+        <h2> Suicide of Indigenous and Non-Indigenous people, number of deaths by state or territory of usual residence <br></h2>
+        <div class="visualization-side" id="chloro_map_non">
+            <!-- Your first visualization content goes here -->
+            <!-- You can use any HTML, JavaScript, or libraries for your chart -->
+        </div>
+        <div class="visualization-side" id="chloro_map_ind">
+            <!-- Your second visualization content goes here -->
+            <!-- You can use any HTML, JavaScript, or libraries for your chart -->
+        </div>
+    </div>
+
+</body>
+</html>
